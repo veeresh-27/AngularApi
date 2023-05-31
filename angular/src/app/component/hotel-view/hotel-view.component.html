@@ -1,0 +1,20 @@
+<div class="bg-gray-900 p-1 flex gap-2">
+  <a
+    class="block w-full max-w-xs mx-auto bg-orange-500 hover:bg-orange-700 focus:bg-orange-700 text-white rounded-lg px-3 py-3 font-semibold"
+    routerLink="/details/add"
+  >
+    Add New Telephone
+  </a>
+  <a
+    class="block max-w-xs mx-auto bg-orange-500 hover:bg-orange-700 focus:bg-orange-700 text-white rounded-lg px-3 py-3 font-semibold"
+    routerLink="/mycart"
+  >
+    Cart
+  </a>
+</div>
+
+<div class="bg-gray-900 min-h-screen p-10">
+  <div *ngFor="let hotel of hotelList" class="p-2">
+    <app-menu-card [hotel]="hotel"></app-menu-card>
+  </div>
+</div>
