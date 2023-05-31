@@ -9,6 +9,8 @@ import { HotelService } from 'src/app/service/hotel.service';
 })
 export class HotelViewComponent implements OnInit {
   hotelList: Hotel[] = [];
+  
+  
   constructor(private service: HotelService) {}
   getDataFromServer() {
     let observable = this.service.getAllHotel();

@@ -10,13 +10,27 @@ import { HotelService } from 'src/app/service/hotel.service';
 })
 export class MenuCardComponent {
   @Input() hotel: Hotel = {} as Hotel;
+  myCart: Hotel[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private service: HotelService //   private router: Router
   ) {}
 
-  addToCart(id: number) {
-    this.service.getTelById(id).subscribe((data) => {});
+  addTodCart() {
+    if (localStorage.getItem('mycart') != null) {
+      var cart = localStorage.getItem('mycart');
+
+      this.myCart = JSON.parse(cart || '{}');
+      this.service.getTelById(this.hotel.id).subscribe((data) => {
+        this.myCart.push(data);
+      });
+      localStorage.setItem('mycart', JSON.stringify(this.myCart));
+    } else {
+      this.service.getTelById(this.hotel.id).subscribe((data) => {
+        this.myCart.push(data);
+      });
+      localStorage.setItem('mycart', JSON.stringify(this.myCart));
+    }
   }
 }
